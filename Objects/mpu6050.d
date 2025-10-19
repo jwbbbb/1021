@@ -51,5 +51,6 @@
 .\objects\mpu6050.o: C:\Keil_v5\ARM\ARMCC\Bin\..\include\stdio.h
 .\objects\mpu6050.o: C:\Keil_v5\ARM\ARMCC\Bin\..\include\stdarg.h
 .\objects\mpu6050.o: .\Hardware\Serial.h
+.\objects\mpu6050.o: .\Hardware\AD.h
 .\objects\mpu6050.o: .\suanfa\suanfa.h
 .\objects\mpu6050.o: C:\Keil_v5\ARM\ARMCC\Bin\..\include\math.h

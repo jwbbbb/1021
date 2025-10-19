@@ -37,6 +37,7 @@
 ".\objects\sensor.o"
 ".\objects\key.o"
 ".\objects\serial.o"
+".\objects\ad.o"
 ".\objects\main.o"
 ".\objects\stm32f10x_it.o"
 ".\objects\test.o"

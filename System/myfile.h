@@ -25,6 +25,6 @@
 #include <stdio.h>
 #include <stdarg.h>
 #include "Serial.h"
-
+#include "AD.h"
 #include "suanfa.h"
 #endif 

@@ -51,4 +51,5 @@
 .\objects\menu.o: C:\Keil_v5\ARM\ARMCC\Bin\..\include\stdio.h
 .\objects\menu.o: C:\Keil_v5\ARM\ARMCC\Bin\..\include\stdarg.h
 .\objects\menu.o: .\Hardware\Serial.h
+.\objects\menu.o: .\Hardware\AD.h
 .\objects\menu.o: .\suanfa\suanfa.h

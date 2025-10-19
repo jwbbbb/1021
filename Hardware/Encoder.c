@@ -93,7 +93,7 @@ void Encoder_Read()
 				Speed_L=Speed_L*Speed_Smooth+Speed_L_Temp*(1-Speed_Smooth);
 				Speed_R=Speed_R*Speed_Smooth+Speed_R_Temp*(1-Speed_Smooth);
 	
-				Location+=(Speed_L+Speed_R)*Real_Distance;
+				Location+=(Speed_L+Speed_R);
 }
 
 void Clear_Location(void) 

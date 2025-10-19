@@ -97,19 +97,32 @@ int16_t RawGyroZ = ((DataH << 8) | DataL);
 *GyroZ = RawGyroZ /16.4;				//实际角速度
 yaw += (float)(*GyroZ) * dt;   	//实际偏航角
 
-// --- 卡尔曼滤波实验 ---
-	// 1. 计算原始角度（单位：度）
-	float acc_roll = atan2f((float)(*AccY), sqrtf((float)(*AccX) * (*AccX) + (*AccZ) * (*AccZ))) * 180.0f / 3.14159f;
-	float acc_pitch = atan2f((float)(*AccX), sqrtf((float)(*AccY) * (*AccY) + (*AccZ) * (*AccZ))) * 180.0f / 3.14159f;
-	float acc_yaw = atan2f((float)(*AccZ), sqrtf((float)(*AccX) * (*AccX) + (*AccY) * (*AccY))) * 180.0f / 3.14159f;
-	// 2. 角速度单位转换（°/s）
+	// --- 卡尔曼融合 roll/pitch，yaw 只用陀螺积分（加速度不能提供航向） ---
+	// 标准加速度角度计算（单位：度）
+	// roll 由 ay, az 给出； pitch 由 ax, ay, az 给出（符号根据坐标系选择）
+	float acc_roll = atan2f((float)(*AccY), (float)(*AccZ)) * 180.0f / 3.14159f;
+	float acc_pitch = atan2f(-(float)(*AccX), sqrtf((float)(*AccY) * (*AccY) + (float)(*AccZ) * (*AccZ))) * 180.0f / 3.14159f;
+
+	// 角速度单位转换（°/s），注意你的陀螺量程是 ±2000 °/s -> 16.4 LSB/(°/s)
 	float gyroX = (float)(*GyroX) / 16.4f;
 	float gyroY = (float)(*GyroY) / 16.4f;
 	float gyroZ = (float)(RawGyroZ) / 16.4f;
-	// 3. 卡尔曼滤波
+
+	// 初始化 Kalman 角度（第一次读数时）
+	static uint8_t kalman_inited = 0;
+	if (!kalman_inited)
+	{
+		KalmanX.angle = acc_roll;
+		KalmanY.angle = acc_pitch;
+		kalman_inited = 1;
+	}
+
+	// 卡尔曼滤波用于 roll/pitch
 	roll = Kalman_getAngle(&KalmanX, acc_roll, gyroX, dt);
 	pitch = Kalman_getAngle(&KalmanY, acc_pitch, gyroY, dt);
-	yaw = Kalman_getAngle(&KalmanZ, acc_yaw, gyroZ, dt);
+
+	// yaw 不能由加速度得到（除非有磁力计），用陀螺积分得到航向角（并可用磁力计修正漂移）
+	yaw += gyroZ * dt;
 
 // roll = my_atan2((float)(*AccX), my_sqrt((float)((*AccY) * (*AccY )+ (*AccZ) * (*AccZ)))) * 180.0f / 3.14159f;  // 俯仰角（单位：弧度）
 // pitch = my_atan2((float)(*AccY), my_sqrt((float)((*AccX) * (*AccX) + (*AccZ) * (*AccZ)))) * 180.0f / 3.14159f;  // 滚转角（单位：弧度）

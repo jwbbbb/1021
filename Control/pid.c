@@ -8,18 +8,19 @@ int sensor_err,final_err=0;
 float straight_err;
 
 /************************PID调节区***************************/
-int Basic_Speed=10;    //基础速度，在这里修改速度，但是元素要先注释掉
+int Basic_Speed=0;    //基础速度，在这里修改速度，但是元素要先注释掉
 float Turn_factor=0.5;
-int Left_Speed=10;
-int	Right_Speed=10;
+int Left_Speed=0;
+int	Right_Speed=0;
 int Speed_PID[3] = {250,5,15}; 
-
+float Move_St;
+float tiaoshi_1;
 #if oldTurn
 float Place_PD[2] = {5.3,4.3};
 #endif
 
 #if newTurn
-float Place_PD[2] = {1,0.01};
+float Place_PD[3] = {0.11,0.001,0.3};
 #endif
 
 #if oldTuren
@@ -89,17 +90,28 @@ void Control()
 			// Different_Speed();
 			
 			//转向调试
-			Place_Out = (int)Place_Control(yaw, 0, Place_PD);
-			Left_Speed = Basic_Speed - Place_Out;
-			Right_Speed = Basic_Speed + Place_Out * Turn_factor;
+			
+			 tiaoshi_1 = Place_Control(yaw, Move_St, Place_PD);
+			 
+			Place_Out =(int)tiaoshi_1;
+			if (tiaoshi_1 - Place_Out>0.5)
+			{
+				Place_Out += 1;
+			}else if (Place_Out - tiaoshi_1 >0.5)
+			{
+				Place_Out -= 1;
+			}
+			{
+			Left_Speed = Basic_Speed;
+			Right_Speed =Basic_Speed;}
 
 			//速度环
-			Speed_Out_L=PID_Control(Speed_L,Left_Speed,Speed_PID); 
-			Speed_Out_R=PID_Control(Speed_R,Right_Speed,Speed_PID);
+			Speed_Out_L=PID_Control(Speed_L,Left_Speed - Place_Out,Speed_PID); 
+			Speed_Out_R=PID_Control(Speed_R,Right_Speed + Place_Out,Speed_PID);
 	
 			//输出限幅
-			Speed_Out_L=Min_Max( Speed_Out_L ,-Max_PWM, Max_PWM );
-			Speed_Out_R=Min_Max( Speed_Out_R ,-Max_PWM, Max_PWM );
+			Speed_Out_L=  Min_Max( Speed_Out_L ,-Max_PWM, Max_PWM );
+			Speed_Out_R= - Min_Max( Speed_Out_R ,-Max_PWM, Max_PWM );
 			
 			//将pwm输出到电机上
 			if(PWM_Enable)
@@ -108,6 +120,11 @@ void Control()
 				Motor_SetPWM_R(Speed_Out_R);
 //			Motor_SetPWM_L(2000);
 //			Motor_SetPWM_R(2000);
+			}else if(!PWM_Enable){
+				Speed_Out_L =0;
+				Speed_Out_R =0;
+				Motor_SetPWM_L(0);
+				Motor_SetPWM_R(0);
 			}
 			 
 }
@@ -116,14 +133,25 @@ void Control()
 /************************位置式转向环pd***************************/
 float Place_Control(float NowPoint, float SetPoint, float *TURN_PID) //PD控制位置环
 {
-	static float LastError = 0; // 静态变量保持历史值
-	float KP, KD; 
+	static float LastError ,Integral_Turn= 0; // 静态变量保持历史值
+	float KP, KI,KD; 
 	float NowError, Out; 
 	NowError = SetPoint - NowPoint; // 当前误差 
 	KP = *TURN_PID; 
-	KD = *(TURN_PID+1); 
-	Out = KP * NowError + KD *(NowError-LastError); // PID 输出值 
+	KI =*(TURN_PID+1);
+	KD = *(TURN_PID+2); 
+	Out = KP * NowError + KI *Integral_Turn +KD *(NowError-LastError); // PID 输出值 
 	LastError = NowError; //更新误差 
+	if (Out  > 5)
+	{
+		Out =5;
+	}
+	if (Out  < -5)
+	{
+		Out = -5;
+	}
+	
+	
 	return Out; 
 }
 

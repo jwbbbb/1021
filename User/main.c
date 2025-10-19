@@ -19,7 +19,7 @@ int main(void)
 		SENSOR_GPIO_Config(); //循迹引脚初始化
 		Motor_Init();					//电机初始化
 		PWM_Init();						//占空比定时器1初始化
-	
+		// AD_Init();
 	while (1)
 	{		  
 		if(data_ready) 	//将陀螺仪放到主循环运行，避免过于频繁导致的中断卡顿（算力不够）	

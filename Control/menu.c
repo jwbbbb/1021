@@ -48,48 +48,48 @@ void menu_operation()
 //开机动画可以自己设置
 void Boot_animation()
 {
-	OLED_ShowString(40,32,"Hello!!!",OLED_8X16);
+	OLED_ShowString(40,64,"ON",OLED_8X16);
 }
 
 //第一页
 void Homepage_1()	
 {
-		OLED_Printf(0,0,OLED_8X16,"	Speed_L:%+05d",Speed_L);
-		OLED_Printf(0,17,OLED_8X16,"Speed_R:%+05d",Speed_R);
-		OLED_Printf(0,34,OLED_8X16,"PWM_L:%+02d",Speed_Out_L);
-		OLED_Printf(0,51,OLED_8X16,"PWM_R:%+02d",Speed_Out_R);
+		OLED_Printf(0,0,OLED_8X16,"Speed_L:%+05d",Speed_L);
+		OLED_Printf(0,16,OLED_8X16,"Speed_R:%+05d",Speed_R);
+		OLED_Printf(0,32,OLED_8X16,"PWM_L:%+02d",Speed_Out_L);
+		OLED_Printf(0,48,OLED_8X16,"PWM_R:%+02d",Speed_Out_R);
 		OLED_Update();
 }
 //第一页
 void Homepage_2()	
 {
-		OLED_Printf(0,0,OLED_8X16,"	s_err:%+04d",sensor_err);
-		OLED_Printf(0,17,OLED_8X16,"f_err:%+04d",final_err);
-		OLED_Printf(0,34,OLED_8X16,"P_Out:%+04d",Place_Out);
-		OLED_Printf(0,51,OLED_8X16,"gz:%+03d",GZ);
+		OLED_Printf(0,0,OLED_8X16,"s_err:%+04d",sensor_err);
+		OLED_Printf(0,16,OLED_8X16,"f_err:%+04d",final_err);
+		OLED_Printf(0,32,OLED_8X16,"P_Out:%+04d",Place_Out);
+		OLED_Printf(0,48,OLED_8X16,"gz:%+03d",GZ);
 		OLED_Update();
 }
 //第三页
 void Homepage_3()	
 {
-			OLED_Printf(0,0,OLED_8X16,"	s:%+06.2f",Location);
+			OLED_Printf(0,0,OLED_8X16,"s:%+06.2f",Location);
   		    OLED_Printf(0,17,OLED_8X16,"yaw:%+03.2f",yaw);
-			OLED_Printf(0,34,OLED_8X16,"FE:%+02d",Element_Flag);
-			OLED_Printf(0,51,OLED_8X16,"FR:%+02d",Ring_Flag);
+			OLED_Printf(0,32,OLED_8X16,"FE:%+02d",Element_Flag);
+			OLED_Printf(0,48,OLED_8X16,"FR:%+02d",Ring_Flag);
 }
 //第四页
 void Homepage_4()	
 {
-			OLED_Printf(0,0,OLED_8X16,"	FP:%+03d",Place_Enable);
-			OLED_Printf(0,17,OLED_8X16,"FN:%+02d",Noline_Flag);
-			OLED_Printf(0,34,OLED_8X16,"FT:%+02d",Ten_Flag);
-			OLED_Printf(0,51,OLED_8X16,"FS:%+02d",Stop_Flag);
+			OLED_Printf(0,0,OLED_8X16,"FP:%+03d",Place_Enable);
+			OLED_Printf(0,16,OLED_8X16,"FN:%+02d",Noline_Flag);
+			OLED_Printf(0,32,OLED_8X16,"FT:%+02d",Ten_Flag);
+			OLED_Printf(0,48,OLED_8X16,"FS:%+02d",Stop_Flag);
 
 	
 }
 
 void Homepage_5()
 {
-    OLED_Printf(0,0,OLED_8X16,"这是第5页");
+    OLED_Printf(0,0,OLED_8X16,"PAGE 5");
     OLED_Update();
 }

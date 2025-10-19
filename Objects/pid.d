@@ -51,4 +51,5 @@
 .\objects\pid.o: C:\Keil_v5\ARM\ARMCC\Bin\..\include\stdio.h
 .\objects\pid.o: C:\Keil_v5\ARM\ARMCC\Bin\..\include\stdarg.h
 .\objects\pid.o: .\Hardware\Serial.h
+.\objects\pid.o: .\Hardware\AD.h
 .\objects\pid.o: .\suanfa\suanfa.h
