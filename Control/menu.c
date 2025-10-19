@@ -19,12 +19,12 @@ void (*current_operation_index)(); //定义一个函数指针
 
 Key_table table[100]=
 {	
-  {0,4,1,(*Boot_animation)},  
+  {0,5,1,(*Boot_animation)},  
   {1,0,2,(*Homepage_1)},
   {2,1,3,(*Homepage_2)},
   {3,2,4,(*Homepage_3)},
-  {4,3,0,(*Homepage_4)},
-
+  {4,3,5,(*Homepage_4)},
+  {5,4,0,(*Homepage_5)}, // 新增第5页
 };
 void menu_operation()
 {	
@@ -54,7 +54,7 @@ void Boot_animation()
 //第一页
 void Homepage_1()	
 {
-		OLED_Printf(0,1,OLED_8X16,"	Speed_L:%+05d",Speed_L);
+		OLED_Printf(0,0,OLED_8X16,"	Speed_L:%+05d",Speed_L);
 		OLED_Printf(0,17,OLED_8X16,"Speed_R:%+05d",Speed_R);
 		OLED_Printf(0,34,OLED_8X16,"PWM_L:%+02d",Speed_Out_L);
 		OLED_Printf(0,51,OLED_8X16,"PWM_R:%+02d",Speed_Out_R);
@@ -88,4 +88,8 @@ void Homepage_4()
 	
 }
 
-
+void Homepage_5()
+{
+    OLED_Printf(0,0,OLED_8X16,"这是第5页");
+    OLED_Update();
+}

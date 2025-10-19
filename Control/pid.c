@@ -1,4 +1,6 @@
 #include "myfile.h"
+#define oldTurn 0
+#define newTurn 1
 /************************全局变量***************************/
 uint8_t Place_Enable,PWM_Enable=1;//（转向环和速度环的使能开关）
 int Speed_Out_L,Speed_Out_R,Place_Out=0;//两个环的输出
@@ -6,12 +8,21 @@ int sensor_err,final_err=0;
 float straight_err;
 
 /************************PID调节区***************************/
-int Basic_Speed=0;    //基础速度，在这里修改速度，但是元素要先注释掉
+int Basic_Speed=10;    //基础速度，在这里修改速度，但是元素要先注释掉
 float Turn_factor=0.5;
-int Left_Speed,Right_Speed=0;
-int Speed_PID[3] = {250,0,30}; 
-float Place_PD[2] = {5.3,4.3};
+int Left_Speed=10;
+int	Right_Speed=10;
+int Speed_PID[3] = {250,5,15}; 
 
+#if oldTurn
+float Place_PD[2] = {5.3,4.3};
+#endif
+
+#if newTurn
+float Place_PD[2] = {1,0.01};
+#endif
+
+#if oldTuren
 void Control()
 {
 			// 获取传感器加权误差（原有算法）
@@ -27,12 +38,12 @@ void Control()
 			}
 			
 			//元素处理，一开始调车的时候先关掉
-			Element_Process();
+			// Element_Process();
 			//获取编码器值
 			Encoder_Read();
 			
 			//转向处理
-			Different_Speed();
+			// Different_Speed();
 			
 			//速度环
 			Speed_Out_L=PID_Control(Speed_L,Left_Speed,Speed_PID); 
@@ -52,7 +63,55 @@ void Control()
 			}
 			 
 }
+#endif
 
+#if newTurn
+void Control()
+{
+			// // 获取传感器加权误差（原有算法）
+			// sensor_err = Error_Calcaulate(); 
+	
+			// // 计算融合误差	
+			// final_err = get_fused_error(sensor_err,GZ);
+	
+			// //转向环
+			// if(Place_Enable)
+			// {
+			// 	Place_Out=(int)Place_Control(final_err,0,Place_PD);
+			// }
+			
+			//元素处理，一开始调车的时候先关掉
+			// Element_Process();
+			//获取编码器值
+			Encoder_Read();
+			
+			//转向处理
+			// Different_Speed();
+			
+			//转向调试
+			Place_Out = (int)Place_Control(yaw, 0, Place_PD);
+			Left_Speed = Basic_Speed - Place_Out;
+			Right_Speed = Basic_Speed + Place_Out * Turn_factor;
+
+			//速度环
+			Speed_Out_L=PID_Control(Speed_L,Left_Speed,Speed_PID); 
+			Speed_Out_R=PID_Control(Speed_R,Right_Speed,Speed_PID);
+	
+			//输出限幅
+			Speed_Out_L=Min_Max( Speed_Out_L ,-Max_PWM, Max_PWM );
+			Speed_Out_R=Min_Max( Speed_Out_R ,-Max_PWM, Max_PWM );
+			
+			//将pwm输出到电机上
+			if(PWM_Enable)
+  		{
+				Motor_SetPWM_L(Speed_Out_L);
+				Motor_SetPWM_R(Speed_Out_R);
+//			Motor_SetPWM_L(2000);
+//			Motor_SetPWM_R(2000);
+			}
+			 
+}
+#endif
 
 /************************位置式转向环pd***************************/
 float Place_Control(float NowPoint, float SetPoint, float *TURN_PID) //PD控制位置环
@@ -79,9 +138,9 @@ int PID_Control(int NowPoint, int SetPoint, int *TURN_PID) //PI控制速度环
 	
     NowError = SetPoint - NowPoint;
     
-//    // 积分项累加（需限幅防饱和）
-//    Integral += NowError;
-//    Integral = Min_Max(Integral, -INTEGRAL_MAX, INTEGRAL_MAX); // 示例：INTEGRAL_MAX=1000
+   // 积分项累加（需限幅防饱和）
+   Integral += NowError;
+   Integral = Min_Max(Integral, -INTEGRAL_MAX, INTEGRAL_MAX); // 示例：INTEGRAL_MAX=1000
     
 		//这里pi、pd我都试过了pd效果更好一点
     Out = KP * NowError + KI * Integral+KD *(NowError-LastError);

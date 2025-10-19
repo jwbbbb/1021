@@ -28,7 +28,10 @@ int main(void)
 						MPU6050_GetData(&AX, &AY, &AZ, &GX, &GY,&GZ);		
 						data_ready = 0;
           }			
-			Key_Num = Key_GetNum();  	    
+			Key_Num = Key_GetNum();
+			OLED_ShowSignedNum(72,0,roll,3,8);
+			OLED_ShowSignedNum(72,16,pitch,3,8);
+			OLED_ShowSignedNum(72,32,yaw,3,8);  	    
 			menu_operation();																					//菜单调用函数
 			Serial_Printf("%d,%d,%f,%f\r\n", 1,Speed_R,yaw,Location); //串口输出（自己修改变量打印到电脑上来调节速度环）
 			OLED_Update();	

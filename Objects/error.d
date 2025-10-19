@@ -51,3 +51,4 @@
 .\objects\error.o: C:\Keil_v5\ARM\ARMCC\Bin\..\include\stdio.h
 .\objects\error.o: C:\Keil_v5\ARM\ARMCC\Bin\..\include\stdarg.h
 .\objects\error.o: .\Hardware\Serial.h
+.\objects\error.o: .\suanfa\suanfa.h

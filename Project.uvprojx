@@ -340,7 +340,7 @@
               <MiscControls>--no-multibyte-chars</MiscControls>
               <Define>USE_STDPERIPH_DRIVER</Define>
               <Undefine></Undefine>
-              <IncludePath>.\Start;.\Library;.\User;.\System;.\Hardware;.\Control</IncludePath>
+              <IncludePath>.\Start;.\Library;.\User;.\System;.\Hardware;.\Control;.\suanfa</IncludePath>
             </VariousControls>
           </Cads>
           <Aads>
@@ -871,6 +871,21 @@
             </File>
           </Files>
         </Group>
+        <Group>
+          <GroupName>suanfa</GroupName>
+          <Files>
+            <File>
+              <FileName>suanfa.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>.\suanfa\suanfa.c</FilePath>
+            </File>
+            <File>
+              <FileName>suanfa.h</FileName>
+              <FileType>5</FileType>
+              <FilePath>.\suanfa\suanfa.h</FilePath>
+            </File>
+          </Files>
+        </Group>
       </Groups>
     </Target>
   </Targets>
@@ -880,5 +895,14 @@
     <components/>
     <files/>
   </RTE>
+
+  <LayerInfo>
+    <Layers>
+      <Layer>
+        <LayName>Project</LayName>
+        <LayPrjMark>1</LayPrjMark>
+      </Layer>
+    </Layers>
+  </LayerInfo>
 
 </Project>

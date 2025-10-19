@@ -7,4 +7,5 @@ void Homepage_1(void);
 void Homepage_2(void);
 void Homepage_3(void);
 void Homepage_4(void);
+void Homepage_5(void);
 #endif
