@@ -38,3 +38,5 @@ Listings/         # 自定义列表文件目录（如有）
 *.tmp             # 临时文件
 build/*            # 自定义构建目录（如有）
 Objects/*
+Project.uvguix.shinian
+Objects/Project.build_log.htm
