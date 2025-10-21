@@ -20,7 +20,10 @@ float Place_PD[2] = {5.3,4.3};
 #endif
 
 #if newTurn
-float Place_PD[3] = {0.11,0.001,0.3};
+float Place_PD[3] = {0.5,0.001,0.3};
+//float Place_PD[3] = {0.5,0.001,1};
+//int max_pdOut = 20;
+int max_pdOut = 20;
 #endif
 
 #if oldTuren
@@ -66,7 +69,7 @@ void Control()
 }
 #endif
 
-#if newTurn
+#if 0
 void Control()
 {
 			// // »ñÈ¡´«¸ÐÆ÷¼ÓÈ¨Îó²î£¨Ô­ÓÐËã·¨£©
@@ -91,7 +94,7 @@ void Control()
 			
 			//×ªÏòµ÷ÊÔ
 			
-			 tiaoshi_1 = Place_Control(yaw, Move_St, Place_PD);
+			 tiaoshi_1 = Place_Control(yaw, Move_St*2, Place_PD);
 			 
 			Place_Out =(int)tiaoshi_1;
 			if (tiaoshi_1 - Place_Out>0.5)
@@ -123,6 +126,8 @@ void Control()
 			}else if(!PWM_Enable){
 				Speed_Out_L =0;
 				Speed_Out_R =0;
+				yaw =0;
+				Move_St=0;
 				Motor_SetPWM_L(0);
 				Motor_SetPWM_R(0);
 			}
@@ -142,13 +147,13 @@ float Place_Control(float NowPoint, float SetPoint, float *TURN_PID) //PD¿ØÖÆÎ»Ö
 	KD = *(TURN_PID+2); 
 	Out = KP * NowError + KI *Integral_Turn +KD *(NowError-LastError); // PID Êä³öÖµ 
 	LastError = NowError; //¸üÐÂÎó²î 
-	if (Out  > 5)
+	if (Out  > max_pdOut)
 	{
-		Out =5;
+		Out = max_pdOut;
 	}
-	if (Out  < -5)
+	if (Out  < -max_pdOut)
 	{
-		Out = -5;
+		Out = -max_pdOut;
 	}
 	
 	

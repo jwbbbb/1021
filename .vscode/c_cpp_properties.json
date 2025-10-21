@@ -96,13 +96,15 @@
         {
             "name": "Target 1",
             "includePath": [
-                "e:\\znc\\stm32循迹小车开源\\代码部分 - 副本\\Start",
-                "e:\\znc\\stm32循迹小车开源\\代码部分 - 副本\\Library",
-                "e:\\znc\\stm32循迹小车开源\\代码部分 - 副本\\User",
-                "e:\\znc\\stm32循迹小车开源\\代码部分 - 副本\\System",
-                "e:\\znc\\stm32循迹小车开源\\代码部分 - 副本\\Hardware",
-                "e:\\znc\\stm32循迹小车开源\\代码部分 - 副本\\Control",
-                "e:\\znc\\stm32循迹小车开源\\代码部分 - 副本\\suanfa",
+                "e:\\znc\\1021\\Start",
+                "e:\\znc\\1021\\Library",
+                "e:\\znc\\1021\\User",
+                "e:\\znc\\1021\\System",
+                "e:\\znc\\1021\\Hardware",
+                "e:\\znc\\1021\\Control",
+                "e:\\znc\\1021\\suanfa",
+                "e:\\znc\\1021\\Device\\Inc",
+                "e:\\znc\\1021\\ModuleDrivers\\Inc",
                 "C:\\Keil_v5\\ARM\\ARMCC\\include",
                 "C:\\Keil_v5\\ARM\\ARMCC\\include\\rw"
             ],

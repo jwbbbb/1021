@@ -107,23 +107,23 @@
 
 /*编码器测试*/
 
-int main(void)
-{
-		OLED_Init();
-		Timer_Init();
-		Encoder_Init(); 
-		Speed_L=0;
-		Speed_R=0;
-	while (1)
-	
-	{
-		OLED_Printf(0,0,OLED_8X16,"Speed:%+05d",Speed_L);
-		OLED_Printf(0,17,OLED_8X16,"Speed:%+05d",Speed_R);
-		
-		OLED_Update();
-			
-	}
-}
+//int main(void)
+//{
+//		OLED_Init();
+//		Timer_Init();
+//		Encoder_Init(); 
+//		Speed_L=0;
+//		Speed_R=0;
+//	while (1)
+//	
+//	{
+//		OLED_Printf(0,0,OLED_8X16,"Speed:%+05d",Speed_L);
+//		OLED_Printf(0,17,OLED_8X16,"Speed:%+05d",Speed_R);
+//		
+//		OLED_Update();
+//			
+//	}
+//}
 
 
 //void TIM3_IRQHandler(void)

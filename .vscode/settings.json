@@ -80,6 +80,7 @@
     "new": "c",
     "iosfwd": "c",
     "limits": "c",
-    "utility": "c"
+    "utility": "c",
+    "cmath": "cpp"
   }
 }

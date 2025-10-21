@@ -5,6 +5,7 @@
   ***************************************************************************************
   */
 #include "myfile.h"
+#include "move.h"
 volatile uint8_t data_ready = 0;
 
 /************************主函数***************************/
@@ -19,13 +20,16 @@ int main(void)
 		SENSOR_GPIO_Config(); //循迹引脚初始化
 		Motor_Init();					//电机初始化
 		PWM_Init();						//占空比定时器1初始化
-		// AD_Init();
+		PID_Init();						//运动控制PID初始化（C++实现）
+		// AD_Init();	
 	while (1)
 	{		  
-		if(data_ready) 	//将陀螺仪放到主循环运行，避免过于频繁导致的中断卡顿（算力不够）	
-					{  	 
+		if(data_ready) 	//将陀螺仪放到主循环运行，避免过于频繁导致的中断卡顿（算力不够） 
+					{	  
 						//获取陀螺仪
 						MPU6050_GetData(&AX, &AY, &AZ, &GX, &GY,&GZ);		
+						// 10ms 周期的运动控制任务（C++）
+						
 						data_ready = 0;
           }			
 			Key_Num = Key_GetNum();
@@ -43,7 +47,8 @@ void TIM2_IRQHandler(void)
 
 	if (TIM_GetITStatus(TIM2, TIM_IT_Update) == SET)
 	{			
-		Control();      //控制函数（最主要的控制都在这里面） 
+//		Control();      //控制函数（最主要的控制都在这里面） 
+		move_task();
 		data_ready = 1; //陀螺仪控制标志位
 		Key_Tick();			//获取按键值，江科大的定时器非阻塞
 		TIM_ClearITPendingBit(TIM2, TIM_IT_Update);
