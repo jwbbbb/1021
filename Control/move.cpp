@@ -2,6 +2,13 @@
 #include <stdint.h>
 
 // Forward declarations of C functions from Hardware/Encoder.c
+
+#define PL_1 (-0.2)
+#define PL_2 (-0.5)
+#define PR_1 (0.2)
+#define PR_2 (0.5)
+
+
 extern "C" {
       int16_t Encoder_Get_L(void);
       int16_t Encoder_Get_R(void);
@@ -16,7 +23,11 @@ uint8_t Move_Speed =0;
 float Fllow_Move;
 extern float yaw;
 extern float pitch;
+extern uint16_t vals[4];
 uint8_t PWM_NewEnable=1;
+
+float Total_T;
+
 void PID_Init(void)
 {
       PID.Init(&Speed_Pid[0], POSITION, L_Speed_KP, L_Speed_KI, L_Speed_KD, L_Speed_MaxOut, L_Speed_IntegralLimit, L_Speed_BandI); //左轮速度环初始化
@@ -29,8 +40,8 @@ void move_task(void)
      Speed_Pid[0].ref = Encoder_Get_L(); //获取左轮编码器值
      Speed_Pid[1].ref = -Encoder_Get_R(); //获取右轮编码器
      
-
-     PID.Calc(&Turn_Pid, yaw, Fllow_Move); //计算转向环输出，暂时设为0
+      Total_T = vals[0] * PL_1 + vals[1] * PL_2 + vals[2] *PR_2 * vals[3] * PR_1;
+     PID.Calc(&Turn_Pid, Total_T *0.2, 0); //计算转向环输出，暂时设为0
 
     Speed_Pid[0].set = Move_Speed - Turn_Pid.out; //设置左轮速度目标
      Speed_Pid[1].set = Move_Speed + Turn_Pid.out; //设置右轮速度目标

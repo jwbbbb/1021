@@ -47,7 +47,7 @@ void TIM2_IRQHandler(void)
 	if (TIM_GetITStatus(TIM2, TIM_IT_Update) == SET)
 	{			 
 		
-		//move_task();
+		move_task();
 		data_ready = 1; //陀螺仪控制标志位
 		Key_Tick();			//获取按键值，江科大的定时器非阻塞
 		TIM_ClearITPendingBit(TIM2, TIM_IT_Update);

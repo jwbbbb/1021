@@ -5,7 +5,7 @@
 
 // adc_buffer 顺序：PA2, PA3, PA4, PA5, PB0, PB1
 extern volatile uint16_t adc_buffer[6];
-
+extern uint16_t vals[4];
 void AD_Init(void);
 void AD_GetValues(uint16_t *out_buf, uint8_t len);
 // 安全读取：在读取时临时关闭 DMA 以保证数据一致性

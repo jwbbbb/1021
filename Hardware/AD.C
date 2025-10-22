@@ -7,8 +7,10 @@
 #include "stm32f10x.h"
 #include "myfile.h"
 
+uint16_t vals[4];
 // ADC 采样缓冲区，顺序：PA2, PA3, PA4, PA5, PB0, PB1
 volatile uint16_t adc_buffer[6];
+extern float Total_T;
 
 // 安全读取：在读取时临时关闭 DMA 或禁中断以保证读取的一致性
 void AD_GetValuesSafe(uint16_t *out_buf, uint8_t len)
@@ -24,13 +26,14 @@ void AD_GetValuesSafe(uint16_t *out_buf, uint8_t len)
 // 简单测试：读取 ADC 并把数值打印到 OLED（需项目中有 OLED_Printf/OLED_Update）
 void AD_Test(void)
 {
-	uint16_t vals[4];
+	
 	AD_GetValues(vals,4);
 	// 在 OLED 上显示六路值
 	OLED_Printf(0, 0, OLED_8X16, "1:%05d", vals[0]);
 	OLED_Printf(0, 16, OLED_8X16, "2:%05d", vals[1]);
 	OLED_Printf(0, 32, OLED_8X16, "5:%05d", vals[3]);
 	OLED_Printf(0, 48, OLED_8X16, "6:%05d", vals[2]);
+		OLED_Printf(64, 48, OLED_8X16, "6:%05d", (int)Total_T);
 	// 下一行显示第5和第6路（换页或覆盖显示，根据 OLED 高度调整）
 	// OLED_Printf(64, 0, OLED_8X16, "5:%04d", vals[4]);
 	// OLED_Printf(64, 16, OLED_8X16, "6:%04d", vals[5]);
