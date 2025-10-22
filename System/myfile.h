@@ -11,17 +11,17 @@
 #include "Motor.h"
 #include "PWM.h"
 #include "Timer.h"
-#include "pid.h"
+
 #include "Encoder.h"
 #include "stm32f10x.h"                  // Device header
 #include "Delay.h"
 #include "OLED.h"
 #include "sensor.h"
-#include "error.h"
+
 #include "key.h"
 #include "myfile.h"
 #include "menu.h"
-#include "element.h"
+
 #include <stdio.h>
 #include <stdarg.h>
 #include "Serial.h"

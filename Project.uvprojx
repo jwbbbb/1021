@@ -840,26 +840,6 @@
           <GroupName>Control</GroupName>
           <Files>
             <File>
-              <FileName>error.c</FileName>
-              <FileType>1</FileType>
-              <FilePath>.\Control\error.c</FilePath>
-            </File>
-            <File>
-              <FileName>error.h</FileName>
-              <FileType>5</FileType>
-              <FilePath>.\Control\error.h</FilePath>
-            </File>
-            <File>
-              <FileName>pid.c</FileName>
-              <FileType>1</FileType>
-              <FilePath>.\Control\pid.c</FilePath>
-            </File>
-            <File>
-              <FileName>pid.h</FileName>
-              <FileType>5</FileType>
-              <FilePath>.\Control\pid.h</FilePath>
-            </File>
-            <File>
               <FileName>menu.c</FileName>
               <FileType>1</FileType>
               <FilePath>.\Control\menu.c</FilePath>
@@ -868,16 +848,6 @@
               <FileName>menu.h</FileName>
               <FileType>5</FileType>
               <FilePath>.\Control\menu.h</FilePath>
-            </File>
-            <File>
-              <FileName>element.c</FileName>
-              <FileType>1</FileType>
-              <FilePath>.\Control\element.c</FilePath>
-            </File>
-            <File>
-              <FileName>element.h</FileName>
-              <FileType>5</FileType>
-              <FilePath>.\Control\element.h</FilePath>
             </File>
             <File>
               <FileName>move.cpp</FileName>

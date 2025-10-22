@@ -39,15 +39,12 @@
 .\objects\main.o: .\Hardware\Motor.h
 .\objects\main.o: .\Hardware\PWM.h
 .\objects\main.o: .\System\Timer.h
-.\objects\main.o: .\Control\pid.h
 .\objects\main.o: .\Hardware\Encoder.h
 .\objects\main.o: .\Hardware\sensor.h
 .\objects\main.o: .\System\sys.h
-.\objects\main.o: .\Control\error.h
 .\objects\main.o: .\Hardware\key.h
 .\objects\main.o: .\System\myfile.h
 .\objects\main.o: .\Control\menu.h
-.\objects\main.o: .\Control\element.h
 .\objects\main.o: C:\Keil_v5\ARM\ARMCC\Bin\..\include\stdio.h
 .\objects\main.o: C:\Keil_v5\ARM\ARMCC\Bin\..\include\stdarg.h
 .\objects\main.o: .\Hardware\Serial.h

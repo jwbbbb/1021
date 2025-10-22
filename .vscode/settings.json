@@ -81,6 +81,7 @@
     "iosfwd": "c",
     "limits": "c",
     "utility": "c",
-    "cmath": "cpp"
+    "cmath": "cpp",
+    "move.h": "c"
   }
 }

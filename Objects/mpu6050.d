@@ -39,15 +39,12 @@
 .\objects\mpu6050.o: .\Hardware\Motor.h
 .\objects\mpu6050.o: .\Hardware\PWM.h
 .\objects\mpu6050.o: .\System\Timer.h
-.\objects\mpu6050.o: .\Control\pid.h
 .\objects\mpu6050.o: .\Hardware\Encoder.h
 .\objects\mpu6050.o: .\Hardware\sensor.h
 .\objects\mpu6050.o: .\System\sys.h
-.\objects\mpu6050.o: .\Control\error.h
 .\objects\mpu6050.o: .\Hardware\key.h
 .\objects\mpu6050.o: .\System\myfile.h
 .\objects\mpu6050.o: .\Control\menu.h
-.\objects\mpu6050.o: .\Control\element.h
 .\objects\mpu6050.o: C:\Keil_v5\ARM\ARMCC\Bin\..\include\stdio.h
 .\objects\mpu6050.o: C:\Keil_v5\ARM\ARMCC\Bin\..\include\stdarg.h
 .\objects\mpu6050.o: .\Hardware\Serial.h
