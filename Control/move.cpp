@@ -3,10 +3,10 @@
 
 // Forward declarations of C functions from Hardware/Encoder.c
 
-#define PL_1 (-0.2)
-#define PL_2 (-0.5)
-#define PR_1 (0.2)
-#define PR_2 (0.5)
+#define PL_1 (-0.06)
+#define PL_2 (-0.15)
+#define PR_1 (0.06)
+#define PR_2 (0.15)
 
 
 extern "C" {
@@ -18,7 +18,7 @@ extern "C" {
 #include "move.h"
 sPidTypeDef Speed_Pid[2];
 sPidTypeDef Turn_Pid;
-uint8_t Move_Speed =0;
+uint8_t Move_Speed =20;
 
 float Fllow_Move;
 extern float yaw;
@@ -58,8 +58,8 @@ void move_task(void)
 			}else if(!PWM_NewEnable){
 				Speed_Pid[0].out =0;
 				Speed_Pid[1].out =0;
-				yaw =0;
-				Fllow_Move=0;
+				// yaw =0;
+				// Fllow_Move=0;
 				Motor_SetPWM_L(0);
 				Motor_SetPWM_R(0);
 			}

@@ -898,7 +898,7 @@ I (.\Control\menu.h)(0x68E88E8C)
 I (C:\Keil_v5\ARM\ARMCC\include\stdio.h)(0x588B8344)
 I (C:\Keil_v5\ARM\ARMCC\include\stdarg.h)(0x588B8344)
 I (.\Hardware\Serial.h)(0x62D3EBED)
-I (.\Hardware\AD.h)(0x68F4C165)
+I (.\Hardware\AD.h)(0x68F88F8D)
 I (.\suanfa\suanfa.h)(0x68E88F67)
 I (C:\Keil_v5\ARM\ARMCC\include\math.h)(0x588B8344)
 F (.\Hardware\MPU6050.h)(0x681CCCD5)()
@@ -1105,7 +1105,7 @@ I (.\Control\menu.h)(0x68E88E8C)
 I (C:\Keil_v5\ARM\ARMCC\include\stdio.h)(0x588B8344)
 I (C:\Keil_v5\ARM\ARMCC\include\stdarg.h)(0x588B8344)
 I (.\Hardware\Serial.h)(0x62D3EBED)
-I (.\Hardware\AD.h)(0x68F4C165)
+I (.\Hardware\AD.h)(0x68F88F8D)
 I (.\suanfa\suanfa.h)(0x68E88F67)
 F (.\Hardware\Key.h)(0x681A316D)()
 F (.\Hardware\Serial.c)(0x68D7977B)(--c99 -c --cpu Cortex-M3 -g -O1 --apcs=interwork --split_sections -I .\Start -I .\Library -I .\User -I .\System -I .\Hardware -I .\Control -I .\suanfa -I .\Device\Inc -I .\ModuleDrivers\Inc --no-multibyte-chars-IC:\Keil_v5\ARM\PACK\Keil\STM32F1xx_DFP\2.2.0\Device\Include-D__UVISION_VERSION="542" -DSTM32F10X_MD -DUSE_STDPERIPH_DRIVER-o .\objects\serial.o --omf_browse .\objects\serial.crf --depend .\objects\serial.d)
@@ -1156,7 +1156,7 @@ I (.\Control\menu.h)(0x68E88E8C)
 I (C:\Keil_v5\ARM\ARMCC\include\stdio.h)(0x588B8344)
 I (C:\Keil_v5\ARM\ARMCC\include\stdarg.h)(0x588B8344)
 I (.\Hardware\Serial.h)(0x62D3EBED)
-I (.\Hardware\AD.h)(0x68F4C165)
+I (.\Hardware\AD.h)(0x68F88F8D)
 I (.\suanfa\suanfa.h)(0x68E88F67)
 F (.\Hardware\Serial.h)(0x62D3EBED)()
 F (.\Hardware\AD.C)(0x68F88E5E)(--c99 -c --cpu Cortex-M3 -g -O1 --apcs=interwork --split_sections -I .\Start -I .\Library -I .\User -I .\System -I .\Hardware -I .\Control -I .\suanfa -I .\Device\Inc -I .\ModuleDrivers\Inc --no-multibyte-chars-IC:\Keil_v5\ARM\PACK\Keil\STM32F1xx_DFP\2.2.0\Device\Include-D__UVISION_VERSION="542" -DSTM32F10X_MD -DUSE_STDPERIPH_DRIVER-o .\objects\ad.o --omf_browse .\objects\ad.crf --depend .\objects\ad.d)
@@ -1207,9 +1207,9 @@ I (.\Control\menu.h)(0x68E88E8C)
 I (C:\Keil_v5\ARM\ARMCC\include\stdio.h)(0x588B8344)
 I (C:\Keil_v5\ARM\ARMCC\include\stdarg.h)(0x588B8344)
 I (.\Hardware\Serial.h)(0x62D3EBED)
-I (.\Hardware\AD.h)(0x68F4C165)
+I (.\Hardware\AD.h)(0x68F88F8D)
 I (.\suanfa\suanfa.h)(0x68E88F67)
-F (.\Hardware\AD.h)(0x68F4C165)()
+F (.\Hardware\AD.h)(0x68F88F8D)()
 F (.\User\main.c)(0x68F88BEA)(--c99 -c --cpu Cortex-M3 -g -O1 --apcs=interwork --split_sections -I .\Start -I .\Library -I .\User -I .\System -I .\Hardware -I .\Control -I .\suanfa -I .\Device\Inc -I .\ModuleDrivers\Inc --no-multibyte-chars-IC:\Keil_v5\ARM\PACK\Keil\STM32F1xx_DFP\2.2.0\Device\Include-D__UVISION_VERSION="542" -DSTM32F10X_MD -DUSE_STDPERIPH_DRIVER-o .\objects\main.o --omf_browse .\objects\main.crf --depend .\objects\main.d)
 I (.\System\myfile.h)(0x68F71329)
 I (.\Start\stm32f10x.h)(0x4D783CB4)
@@ -1258,7 +1258,7 @@ I (.\Control\menu.h)(0x68E88E8C)
 I (C:\Keil_v5\ARM\ARMCC\include\stdio.h)(0x588B8344)
 I (C:\Keil_v5\ARM\ARMCC\include\stdarg.h)(0x588B8344)
 I (.\Hardware\Serial.h)(0x62D3EBED)
-I (.\Hardware\AD.h)(0x68F4C165)
+I (.\Hardware\AD.h)(0x68F88F8D)
 I (.\suanfa\suanfa.h)(0x68E88F67)
 I (.\Control\move.h)(0x68F7183C)
 F (.\User\stm32f10x_conf.h)(0x4D99A59E)()
@@ -1374,11 +1374,11 @@ I (.\Control\menu.h)(0x68E88E8C)
 I (C:\Keil_v5\ARM\ARMCC\include\stdio.h)(0x588B8344)
 I (C:\Keil_v5\ARM\ARMCC\include\stdarg.h)(0x588B8344)
 I (.\Hardware\Serial.h)(0x62D3EBED)
-I (.\Hardware\AD.h)(0x68F4C165)
+I (.\Hardware\AD.h)(0x68F88F8D)
 I (.\suanfa\suanfa.h)(0x68E88F67)
 I (Control\move.h)(0x68F7183C)
 F (.\Control\menu.h)(0x68E88E8C)()
-F (.\Control\move.cpp)(0x68F88F03)(--cpp -c --cpu Cortex-M3 -g -O1 --apcs=interwork --split_sections -I .\Start -I .\Library -I .\User -I .\System -I .\Hardware -I .\Control -I .\suanfa -I .\Device\Inc -I .\ModuleDrivers\Inc --no-multibyte-chars --cpp-IC:\Keil_v5\ARM\PACK\Keil\STM32F1xx_DFP\2.2.0\Device\Include-D__UVISION_VERSION="542" -DSTM32F10X_MD -DUSE_STDPERIPH_DRIVER-o .\objects\move.o --omf_browse .\objects\move.crf --depend .\objects\move.d)
+F (.\Control\move.cpp)(0x68F892E4)(--cpp -c --cpu Cortex-M3 -g -O1 --apcs=interwork --split_sections -I .\Start -I .\Library -I .\User -I .\System -I .\Hardware -I .\Control -I .\suanfa -I .\Device\Inc -I .\ModuleDrivers\Inc --no-multibyte-chars --cpp-IC:\Keil_v5\ARM\PACK\Keil\STM32F1xx_DFP\2.2.0\Device\Include-D__UVISION_VERSION="542" -DSTM32F10X_MD -DUSE_STDPERIPH_DRIVER-o .\objects\move.o --omf_browse .\objects\move.crf --depend .\objects\move.d)
 I (.\suanfa\algorithm_pid.h)(0x68F6ED70)
 I (.\Device\Inc\dev_system.h)(0x68F6ED13)
 I (.\Start\stm32f10x.h)(0x4D783CB4)
