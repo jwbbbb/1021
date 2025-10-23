@@ -40,3 +40,4 @@ float Kalman_getAngle(Kalman_t *kalman, float newAngle, float newRate, float dt)
 
     return kalman->angle;
 }
+

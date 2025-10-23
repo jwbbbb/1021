@@ -7,6 +7,16 @@
 #include "stm32f10x.h"
 #include "myfile.h"
 
+
+//#define PL_1MAX	2
+//#define PL_2MAX 3
+//#define PR_2MAX 10
+//#define PR_1MAX 2
+#define PL_1MAX	1
+#define PL_2MAX 1
+#define PR_2MAX 1
+#define PR_1MAX 1
+
 uint16_t vals[4];
 // ADC 采样缓冲区，顺序：PA2, PA3, PA4, PA5, PB0, PB1
 volatile uint16_t adc_buffer[6];
@@ -26,14 +36,24 @@ void AD_GetValuesSafe(uint16_t *out_buf, uint8_t len)
 // 简单测试：读取 ADC 并把数值打印到 OLED（需项目中有 OLED_Printf/OLED_Update）
 void AD_Test(void)
 {
-	
+	static uint16_t vals_MX[4];
 	AD_GetValues(vals,4);
+	for(uint8_t i =0;i<4;i++)
+	if (vals[i] > vals_MX[i])
+	{
+		vals_MX[i] = vals[i];
+	}
+	
 	// 在 OLED 上显示六路值
-	OLED_Printf(0, 0, OLED_8X16, "1:%05d", vals[0]);
-	OLED_Printf(0, 16, OLED_8X16, "2:%05d", vals[1]);
-	OLED_Printf(0, 32, OLED_8X16, "5:%05d", vals[3]);
-	OLED_Printf(0, 48, OLED_8X16, "6:%05d", vals[2]);
-		OLED_Printf(64, 48, OLED_8X16, "6:%05d", (int)Total_T);
+	OLED_Printf(0, 0, OLED_8X16, "%04d", vals_MX[0]/PL_1MAX);
+	OLED_Printf(0, 16, OLED_8X16, "%04d", vals_MX[1]/PL_2MAX);
+	OLED_Printf(0, 32, OLED_8X16, "%04d", vals_MX[3]/PR_2MAX);
+	OLED_Printf(0, 48, OLED_8X16, "%04d", vals_MX[2]/PR_1MAX);
+	OLED_Printf(40, 0, OLED_8X16, "%04d", vals[0]/PL_1MAX);
+	OLED_Printf(40, 16, OLED_8X16, "%04d", vals[1]/PL_2MAX);
+	OLED_Printf(40, 32, OLED_8X16, "%04d", vals[3]/PR_2MAX);
+	OLED_Printf(40, 48, OLED_8X16, "%04d", vals[2]/PR_1MAX);
+		OLED_Printf(72, 48, OLED_8X16, "T%05d", (int)Total_T);
 	// 下一行显示第5和第6路（换页或覆盖显示，根据 OLED 高度调整）
 	// OLED_Printf(64, 0, OLED_8X16, "5:%04d", vals[4]);
 	// OLED_Printf(64, 16, OLED_8X16, "6:%04d", vals[5]);

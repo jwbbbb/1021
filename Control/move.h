@@ -26,20 +26,20 @@ uint8_t Move_GetSpeedR_Set(void);
 #define R_Speed_KI 5.0f
 #define R_Speed_KD 15.0f
 #define R_Speed_MaxOut 7200
-#define R_Speed_IntegralLimit 1000.0f
+#define R_Speed_IntegralLimit 1500.0f
 #define R_Speed_BandI 100.0f
 
 #define L_Speed_KP 250.0f
 #define L_Speed_KI 5.0f
 #define L_Speed_KD 15.0f
 #define L_Speed_MaxOut 7200
-#define L_Speed_IntegralLimit 1000.0f
+#define L_Speed_IntegralLimit 1500.0f
 #define L_Speed_BandI 100.0f
 
 #define Turn_KP 0.50f
 #define Turn_KI 0.001f
 #define Turn_KD 0.3f
-#define Turn_MaxOut 35
+#define Turn_MaxOut 40
 #define Turn_IntegralLimit 10.0f
 #define Turn_BandI 1.0f
 
