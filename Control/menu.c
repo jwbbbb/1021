@@ -54,15 +54,15 @@ void Boot_animation()
 //第一页
 void Homepage_1()	
 {
-		Move_SetSpeed (0);
-					OLED_ShowSignedNum(88,0,roll,3,8);
-			OLED_ShowSignedNum(88,16,pitch,3,8);
-			OLED_ShowSignedNum(88,32,yaw,3,8); 
-		OLED_Printf(0,0,OLED_8X16,"S_L:%+02d", (int)Move_GetSpeedL_Measure());
-		OLED_Printf(0,16,OLED_8X16,"S_R:%+02d", (int)Move_GetSpeedR_Measure());
-		OLED_Printf(0,32,OLED_8X16,"S_setL:%+02d", (int)Move_GetSpeedL_Set());
-		OLED_Printf(0,48,OLED_8X16,"S_setR:%+02d", (int)Move_GetSpeedR_Set());
-		OLED_Update();
+		// Move_SetSpeed (0);
+		// 			OLED_ShowSignedNum(88,0,roll,3,8);
+		// 	OLED_ShowSignedNum(88,16,pitch,3,8);
+		// 	OLED_ShowSignedNum(88,32,yaw,3,8); 
+		// OLED_Printf(0,0,OLED_8X16,"S_L:%+02d", (int)Move_GetSpeedL_Measure());
+		// OLED_Printf(0,16,OLED_8X16,"S_R:%+02d", (int)Move_GetSpeedR_Measure());
+		// OLED_Printf(0,32,OLED_8X16,"S_setL:%+02d", (int)Move_GetSpeedL_Set());
+		// OLED_Printf(0,48,OLED_8X16,"S_setR:%+02d", (int)Move_GetSpeedR_Set());
+		// OLED_Update();
 }
 //第一页
 void Homepage_2()	

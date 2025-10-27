@@ -4,39 +4,42 @@
   * 程序版权归江协科技所有，任何人或组织不得将其据为己有
   ***************************************************************************************
   */
+  /*本代码依据开源建立和修改*/
 #include "myfile.h"
 #include "move.h"
 volatile uint8_t data_ready = 0;
-
+uint16_t Time_Cont =0;
 /************************主函数***************************/
 int main(void)
 {
-		Serial_Init();
+
+//	Serial_Init();
 		Key_Init();
-		MPU6050_Init();
-		OLED_Init();
+//		MPU6050_Init();
+//		OLED_Init();
 		Timer_Init();
 		Encoder_Init(); 
-		SENSOR_GPIO_Config(); //循迹引脚初始化
 		Motor_Init();					//电机初始化
 		PWM_Init();						//占空比定时器1初始化
 		PID_Init();						//运动控制PID初始化（C++实现）
 		AD_Init();	
 	while (1)
-	{		  
-		if(data_ready) 	//将陀螺仪放到主循环运行，避免过于频繁导致的中断卡顿（算力不够） 
-					{	  
-						//获取陀螺仪
-						MPU6050_GetData(&AX, &AY, &AZ, &GX, &GY,&GZ);		
-						
-						
-						data_ready = 0;
-          }			
-			Key_Num = Key_GetNum();
- 	    AD_Test();
-			menu_operation();																					//菜单调用函数
-			Serial_Printf("%d,%d,%f,%f\r\n", 1,Speed_R,yaw,Location); //串口输出（自己修改变量打印到电脑上来调节速度环）
-			OLED_Update();	
+	{		
+  AD_Test();
+		
+//		if(data_ready) 	//将陀螺仪放到主循环运行，避免过于频繁导致的中断卡顿（算力不够） 
+//					{	  
+//						//获取陀螺仪
+//						MPU6050_GetData(&AX, &AY, &AZ, &GX, &GY,&GZ);		
+//						
+//						
+//						data_ready = 0;
+//          }			
+//			Key_Num = Key_GetNum();
+ 	    
+//		  OLED_Printf(80, 32, OLED_8X16, "%04d", (int)yaw);
+//			menu_operation();		//菜单调用函数
+//			OLED_Update();	
 	}
 }
 
@@ -46,8 +49,11 @@ void TIM2_IRQHandler(void)
 
 	if (TIM_GetITStatus(TIM2, TIM_IT_Update) == SET)
 	{			 
+//		menu_operation();
+		Time_Cont ++;
 		
 		move_task();
+		
 		data_ready = 1; //陀螺仪控制标志位
 		Key_Tick();			//获取按键值，江科大的定时器非阻塞
 		TIM_ClearITPendingBit(TIM2, TIM_IT_Update);

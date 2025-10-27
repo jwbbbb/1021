@@ -16,7 +16,6 @@
 #include "stm32f10x.h"                  // Device header
 #include "Delay.h"
 #include "OLED.h"
-#include "sensor.h"
 
 #include "key.h"
 #include "myfile.h"

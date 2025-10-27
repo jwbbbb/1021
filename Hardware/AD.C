@@ -22,16 +22,7 @@ uint16_t vals[4];
 volatile uint16_t adc_buffer[6];
 extern float Total_T;
 
-// 安全读取：在读取时临时关闭 DMA 或禁中断以保证读取的一致性
-void AD_GetValuesSafe(uint16_t *out_buf, uint8_t len)
-{
-	uint8_t i;
-	if(len > 6) len = 6;
-	// 方式1：临时关闭 DMA
-	DMA_Cmd(DMA1_Channel1, DISABLE);
-	for(i = 0; i < len; i++) out_buf[i] = adc_buffer[i];
-	DMA_Cmd(DMA1_Channel1, ENABLE);
-}
+
 
 // 简单测试：读取 ADC 并把数值打印到 OLED（需项目中有 OLED_Printf/OLED_Update）
 void AD_Test(void)
@@ -44,20 +35,26 @@ void AD_Test(void)
 		vals_MX[i] = vals[i];
 	}
 	
+//		OLED_Printf(0,0,OLED_8X16,"S_L:%+02d", (int)Move_GetSpeedL_Measure());
+//		OLED_Printf(0,16,OLED_8X16,"S_R:%+02d", (int)Move_GetSpeedR_Measure());
+//		OLED_Printf(0,32,OLED_8X16,"S_setL:%+02d", (int)Move_GetSpeedL_Set());
+//		OLED_Printf(0,48,OLED_8X16,"S_setR:%+02d", (int)Move_GetSpeedR_Set());
+
+
 	// 在 OLED 上显示六路值
-	OLED_Printf(0, 0, OLED_8X16, "%04d", vals_MX[0]/PL_1MAX);
-	OLED_Printf(0, 16, OLED_8X16, "%04d", vals_MX[1]/PL_2MAX);
-	OLED_Printf(0, 32, OLED_8X16, "%04d", vals_MX[3]/PR_2MAX);
-	OLED_Printf(0, 48, OLED_8X16, "%04d", vals_MX[2]/PR_1MAX);
-	OLED_Printf(40, 0, OLED_8X16, "%04d", vals[0]/PL_1MAX);
-	OLED_Printf(40, 16, OLED_8X16, "%04d", vals[1]/PL_2MAX);
-	OLED_Printf(40, 32, OLED_8X16, "%04d", vals[3]/PR_2MAX);
-	OLED_Printf(40, 48, OLED_8X16, "%04d", vals[2]/PR_1MAX);
-		OLED_Printf(72, 48, OLED_8X16, "T%05d", (int)Total_T);
+//	OLED_Printf(0, 0, OLED_8X16, "%04d", vals_MX[0]/PL_1MAX);
+//	OLED_Printf(0, 16, OLED_8X16, "%04d", vals_MX[1]/PL_2MAX);
+//	OLED_Printf(0, 32, OLED_8X16, "%04d", vals_MX[3]/PR_2MAX);
+//	OLED_Printf(0, 48, OLED_8X16, "%04d", vals_MX[2]/PR_1MAX);
+//	OLED_Printf(40, 0, OLED_8X16, "%04d", vals[0]/PL_1MAX);
+//	OLED_Printf(40, 16, OLED_8X16, "%04d", vals[1]/PL_2MAX);
+//	OLED_Printf(40, 32, OLED_8X16, "%04d", vals[3]/PR_2MAX);
+//	OLED_Printf(40, 48, OLED_8X16, "%04d", vals[2]/PR_1MAX);
+//		OLED_Printf(72, 48, OLED_8X16, "T%05d", (int)Total_T);
 	// 下一行显示第5和第6路（换页或覆盖显示，根据 OLED 高度调整）
 	// OLED_Printf(64, 0, OLED_8X16, "5:%04d", vals[4]);
 	// OLED_Printf(64, 16, OLED_8X16, "6:%04d", vals[5]);
-	OLED_Update();
+//	OLED_Update();
 	
 
 }
@@ -159,7 +156,7 @@ void AD_Init(void)
 	ADC1_Config();
 }
 
-// 获取当前 adc_buffer 的副本（线程安全：无中断保护，若需要可在调用侧禁中断）
+// 获取当前 adc_buffer 的副本
 void AD_GetValues(uint16_t *out_buf, uint8_t len)
 {
 	uint8_t i;

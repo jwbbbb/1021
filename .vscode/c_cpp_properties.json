@@ -96,17 +96,17 @@
         {
             "name": "Target 1",
             "includePath": [
-                "e:\\znc\\1021\\Start",
-                "e:\\znc\\1021\\Library",
-                "e:\\znc\\1021\\User",
-                "e:\\znc\\1021\\System",
-                "e:\\znc\\1021\\Hardware",
-                "e:\\znc\\1021\\Control",
-                "e:\\znc\\1021\\suanfa",
-                "e:\\znc\\1021\\Device\\Inc",
-                "e:\\znc\\1021\\ModuleDrivers\\Inc",
-                "C:\\Keil_v5\\ARM\\ARMCC\\include",
-                "C:\\Keil_v5\\ARM\\ARMCC\\include\\rw"
+                "c:\\Users\\mi\\xwechat_files\\wxid_2wywza4jzs0w22_30f5\\msg\\file\\2025-10\\nwe\\1021\\Start",
+                "c:\\Users\\mi\\xwechat_files\\wxid_2wywza4jzs0w22_30f5\\msg\\file\\2025-10\\nwe\\1021\\Library",
+                "c:\\Users\\mi\\xwechat_files\\wxid_2wywza4jzs0w22_30f5\\msg\\file\\2025-10\\nwe\\1021\\User",
+                "c:\\Users\\mi\\xwechat_files\\wxid_2wywza4jzs0w22_30f5\\msg\\file\\2025-10\\nwe\\1021\\System",
+                "c:\\Users\\mi\\xwechat_files\\wxid_2wywza4jzs0w22_30f5\\msg\\file\\2025-10\\nwe\\1021\\Hardware",
+                "c:\\Users\\mi\\xwechat_files\\wxid_2wywza4jzs0w22_30f5\\msg\\file\\2025-10\\nwe\\1021\\Control",
+                "c:\\Users\\mi\\xwechat_files\\wxid_2wywza4jzs0w22_30f5\\msg\\file\\2025-10\\nwe\\1021\\suanfa",
+                "c:\\Users\\mi\\xwechat_files\\wxid_2wywza4jzs0w22_30f5\\msg\\file\\2025-10\\nwe\\1021\\Device\\Inc",
+                "c:\\Users\\mi\\xwechat_files\\wxid_2wywza4jzs0w22_30f5\\msg\\file\\2025-10\\nwe\\1021\\ModuleDrivers\\Inc",
+                "D:\\keil5stm\\Core\\ARM\\ARMCC\\include",
+                "D:\\keil5stm\\Core\\ARM\\ARMCC\\include\\rw"
             ],
             "defines": [
                 "USE_STDPERIPH_DRIVER",
